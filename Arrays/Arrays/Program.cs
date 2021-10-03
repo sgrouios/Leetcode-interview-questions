@@ -9,11 +9,6 @@ namespace Arrays
     {
         static void Main(string[] args)
         {
-            var intersection = Intersect(new int[] { 9, 4, 9, 8, 4 }, new int[] { 4, 9, 5 });
-            foreach (var num in intersection)
-            {
-                Console.WriteLine(num);
-            }
         }
 
         public static int RemoveDuplicates(int[] nums)
@@ -118,16 +113,6 @@ namespace Arrays
                 result ^= nums[i];
             }
             return result;
-        }
-
-        public static int[] Intersect(int[] nums1, int[] nums2)
-        {
-            if (nums1.Length > nums2.Length)
-            {
-                return nums1.Intersect(nums2).ToArray();
-            }
-
-            return new int[] { 0 };
         }
     }
 }
