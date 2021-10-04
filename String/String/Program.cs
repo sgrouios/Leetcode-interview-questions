@@ -8,10 +8,15 @@ namespace String
     {
         static void Main(string[] args)
         {
-            string nonRepeat = "loveleetcode";
-            int index = FirstUniqueChar(nonRepeat);
-            Console.WriteLine(nonRepeat[index]);
+            //string nonRepeat = "loveleetcode";
+            //int index = FirstUniqueChar(nonRepeat);
+            //Console.WriteLine(nonRepeat[index]);
 
+            //IsAnagram
+            //Console.WriteLine(IsAnagram("anagram", "nagaram"));
+
+            //IsPalindrome
+            Console.WriteLine(IsPalindrome("A man, a plan, a canal: Panama"));
         }
 
         private static char[] ReverseString(char[] s)
@@ -67,6 +72,45 @@ namespace String
                     return i;
             }
             return -1;
+        }
+
+        private static bool IsAnagram(string s, string t)
+        {
+            if (s.Length != t.Length)
+                return false;
+            int[] charCount = new int[26];
+            for(int i = 0; i < s.Length; i++)
+            {
+                //subtract 97 from char ASCII value to find position in array
+                charCount[s[i] - 97]++;
+                charCount[t[i] - 97]--;
+            }
+            foreach (int i in charCount)
+            {
+                if (i != 0)
+                    return false;
+            }
+            return true;
+        }
+
+        private static bool IsPalindrome(string s)
+        {
+            int i = 0;
+            int j = s.Length - 1;
+            while (i < j)
+            {
+                while (i < j && !char.IsLetterOrDigit(s[i]))
+                {
+                    i++;
+                }
+                while (i < j && !char.IsLetterOrDigit(s[j]))
+                {
+                    j--;
+                }
+                if (i < j && char.ToLower(s[i++]) != char.ToLower(s[j--]))
+                    return false;
+            }
+            return true;
         }
     }
 }
